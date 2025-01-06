@@ -13,7 +13,7 @@ export const enableStatusRecord: Record<Api.Common.EnableStatus, App.I18n.I18nKe
 
 export const enableStatusOptions = transformRecordToOption(enableStatusRecord);
 
-export const vehicleTypeRecord: Record<Api.SystemManage.VehicleType, App.I18n.I18nKey> = {
+export const vehicleTypeRecord: Record<Api.VehicleManager.VehicleType, App.I18n.I18nKey> = {
   Suv: 'page.vehicleManager.type.Suv',
   Mpv: 'page.vehicleManager.type.Mpv',
   Sedan: 'page.vehicleManager.type.Sedan',

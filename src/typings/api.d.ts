@@ -197,9 +197,6 @@ declare namespace Api {
     };
 
 
-
-
-
     type JobTask = {
       successNum: number;
       failNum: number;
@@ -209,7 +206,6 @@ declare namespace Api {
       successRate: number;
     };
 
-    /** Dashboard Line */
     type DashboardLine = {
       taskList: TaskList;
       rankList: RankList[];
@@ -470,64 +466,11 @@ declare namespace Api {
     /** user search params */
     type UserSearchParams = CommonType.RecordNullable<
       Pick<Api.SystemManage.User, 'userName' | 'userGender' | 'nickName' | 'userPhone' | 'userEmail' | 'status'> &
-        CommonSearchParams
+      CommonSearchParams
     >;
 
     /** user list */
     type UserList = Common.PaginatingQueryRecord<User>;
-
-    /** vehicle list */
-    type VehicleList = Common.PaginatingQueryRecord<Vehicle>;
-
-    type VehicleType =
-      | 'Suv'
-      | 'Mpv'
-      | 'Sedan'
-      | 'Coupe'
-      | 'Supercar'
-      | 'Jeep'
-      | 'Minivan'
-      | 'StationWagon'
-      | 'Truck'
-      | 'Bus'
-      | 'Hybrid'
-      | 'EV'
-      | 'Pickup';
-
-    type VehicleSearchParams = CommonType.RecordNullable<
-      Pick<
-        Api.SystemManage.Vehicle,
-        | 'vehicleName'
-        | 'vehicleParts'
-        | 'vehicleDriver'
-        | 'vehicleStates'
-        | 'vehicleDispatchInfo'
-        | 'vehiclePersonCharge'
-        | 'vehicleType'
-      > &
-      CommonSearchParams
-    >;
-
-    type EnableStatus = '1' | '2';
-
-    /** vehicle */
-    type Vehicle = Common.CommonRecord<{
-      // 车辆名字
-      vehicleName: string;
-      // 车辆部门
-      vehicleParts: string;
-      // 驾驶人
-      vehicleDriver: string;
-      // 车辆状态
-      vehicleStates: EnableStatus | null;
-      // 车辆调度信息
-      vehicleDispatchInfo: string;
-      // 车辆管理人员
-      vehiclePersonCharge: string;
-      // 车辆类型
-      vehicleType: string;
-    }>;
-
 
     /**
      * menu type
@@ -629,7 +572,7 @@ declare namespace Api {
       /** 状态 */
       notifyStatus: Api.Common.EnableStatusNumber;
       /** 通知场景 */
-      notifyScene: JobNotifyScene  | WorkflowNotifyScene | null;
+      notifyScene: JobNotifyScene | WorkflowNotifyScene | null;
       /** 通知阈值 */
       notifyThreshold: number;
       /** 限流开关 */
@@ -646,7 +589,7 @@ declare namespace Api {
         Api.NotifyConfig.NotifyConfig,
         'groupName' | 'systemTaskType' | 'notifyStatus' | 'notifyScene' | 'notifyName'
       > &
-        CommonSearchParams
+      CommonSearchParams
     >;
 
     /** notify-config list */
@@ -730,207 +673,6 @@ declare namespace Api {
 
     /* 1: application/json 2：application/x-www-form-urlencoded */
     type AlarmTypeWebhook = 1 | 2;
-  }
-
-  namespace RetryDeadLetter {
-    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'page' | 'size'>;
-
-    type TaskType = 1 | 2;
-
-    /** deadLetter */
-    type DeadLetter = Common.CommonRecord<{
-      /** id */
-      id?: number;
-      /** UniqueId */
-      uniqueId?: string;
-      /** 组名称 */
-      groupName?: string;
-      /** 场景名称 * */
-      sceneName?: string;
-      /** 幂等ID */
-      idempotentId?: string;
-      /** 业务编号 * */
-      bizNo?: string;
-      /** 任务类型 * */
-      taskType?: TaskType;
-      /** 创建时间 * */
-      createDt?: string;
-      /** 执行器名称 */
-      executorName: string;
-      /** 执行方法参数 */
-      argsStr: string;
-    }>;
-
-    /** deadLetter search params */
-    type RetryDeadLetterSearchParams = CommonType.RecordNullable<
-      Pick<
-        Api.RetryDeadLetter.DeadLetter,
-        'id' | 'uniqueId' | 'groupName' | 'sceneName' | 'idempotentId' | 'bizNo' | 'taskType' | 'createDt'
-      > &
-        CommonSearchParams & { datetimeRange?: [string, string] }
-    >;
-
-    /** DeadLetter list */
-    type RetryDeadLetterList = Common.PaginatingQueryRecord<DeadLetter>;
-
-    type BatchDeadLetter = Common.CommonRecord<{
-      groupName?: string;
-      ids: number[];
-    }>;
-  }
-
-  /**
-   * namespace RetryTask
-   *
-   * backend api module: "retryTask"
-   */
-  namespace RetryTask {
-    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'page' | 'size'>;
-
-    type RetryStatusType = 0 | 1 | 2 | 3;
-
-    type TaskType = 1 | 2;
-
-    /** RetryTask */
-    type RetryTask = Common.CommonRecord<{
-      /** UniqueId */
-      uniqueId?: string;
-      /** 组名称 */
-      groupName: string;
-      /** 场景名称 */
-      sceneName: string;
-      /** 幂等id */
-      idempotentId: string;
-      /** 业务编号 */
-      bizNo: string;
-      /** 执行器名称 */
-      executorName: string;
-      /** 执行方法参数 */
-      argsStr: string;
-      /** 扩展字段 */
-      extAttrs?: string;
-      /** 下次触发时间 */
-      nextTriggerAt?: string;
-      /** 重试次数 */
-      retryCount?: number;
-      /** 重试状态 0、重试中 1、重试完成 2、最大次数 3、暂停 */
-      retryStatus: RetryStatusType;
-      /** 任务类型 1、重试数据 2、回调数据 */
-      taskType?: TaskType;
-    }>;
-
-    type RetryTaskBatchAdd = {
-      /** 组名称 */
-      groupName: string;
-      /** 重试状态 0、重试中 1、重试完成 2、最大次数 3、暂停 */
-      retryStatus: RetryStatusType;
-      /** 日志 */
-      logStr: string;
-    };
-
-    type RetryTaskUpdateStatusRequest = {
-      /** id */
-      id: number;
-      /** 组名称 */
-      groupName: string;
-      /** 重试状态 0、重试中 1、重试完成 2、最大次数 3、暂停 */
-      retryStatus: RetryStatusType;
-    };
-
-    type ManualTriggerTaskRequestVO = {
-      groupName: string;
-      uniqueIds: string[];
-    };
-
-    type BatchDeleteRetryTaskVO = {
-      groupName: string;
-      ids: string[];
-    };
-
-    type GenerateRetryIdempotentIdVO = {
-      /** 组名称 */
-      groupName: string;
-      /** 场景名称 */
-      sceneName: string;
-      /** 执行参数 */
-      argsStr: string;
-      /** 执行器名称 */
-      executorName: string;
-    };
-
-    /** RetryTask search params */
-    type RetryTaskSearchParams = CommonType.RecordNullable<
-      Pick<Api.RetryTask.RetryTask, 'uniqueId' | 'groupName' | 'sceneName' | 'idempotentId' | 'bizNo' | 'retryStatus'> &
-        CommonSearchParams
-    >;
-
-    /** RetryTask list */
-    type RetryTaskList = Common.PaginatingQueryRecord<RetryTask>;
-  }
-
-  /**
-   * namespace Scene
-   *
-   * backend api module: "scene"
-   */
-  namespace RetryScene {
-    import EnableStatusNumber = Api.Common.EnableStatusNumber;
-    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'page' | 'size'>;
-
-    /** scene */
-    type Scene = Common.CommonRecord<{
-      /** 组名 */
-      groupName: string;
-      /** 场景名 */
-      sceneName: string;
-      /** 通知场景ids */
-      notifyIds: number[];
-      /** 状态 */
-      sceneStatus: EnableStatusNumber;
-      /** 退避策略 */
-      backOff: BackOff;
-      /** 路由策略 */
-      routeKey: Common.RouteKey;
-      /** 最大重试次数 */
-      maxRetryCount: number;
-      /** 间隔时间 */
-      triggerInterval: string;
-      /** 调用链超时时间 */
-      deadlineRequest: number;
-      /** 超时时间 */
-      executorTimeout: number;
-      /** 描述 */
-      description: string;
-    }>;
-
-    /** scene search params */
-    type SceneSearchParams = CommonType.RecordNullable<
-      Pick<
-        Api.RetryScene.Scene,
-        | 'groupName'
-        | 'sceneName'
-        | 'sceneStatus'
-        | 'backOff'
-        | 'maxRetryCount'
-        | 'triggerInterval'
-        | 'deadlineRequest'
-        | 'executorTimeout'
-        | 'description'
-        | 'routeKey'
-      > &
-        CommonSearchParams
-    >;
-
-    type ExportScene = Common.CommonRecord<{
-      sceneIds: string[];
-    }> &
-      SceneSearchParams;
-
-    /** scene list */
-    type SceneList = Common.PaginatingQueryRecord<Scene>;
-
-    /** 1: 延迟等级 2: 固定时间 3: CRON表达式 4: 随机等待 */
-    type BackOff = 1 | 2 | 3 | 4;
   }
 
   /**
@@ -1083,7 +825,7 @@ declare namespace Api {
         | 'parallelNum'
         | 'description'
       > &
-        CommonSearchParams
+      CommonSearchParams
     >;
 
     type JobUpdateJobStatusRequestVO = {
@@ -1152,7 +894,7 @@ declare namespace Api {
     /** jobTask search params */
     type jobTaskSearchParams = CommonType.RecordNullable<
       Pick<Api.Job.JobTask, 'groupName' | 'taskBatchId' | 'taskStatus'> &
-        CommonSearchParams & { startId: number; fromIndex: number; parentId: string }
+      CommonSearchParams & { startId: number; fromIndex: number; parentId: string }
     >;
 
     /** jobTask list */
@@ -1207,7 +949,7 @@ declare namespace Api {
     /** JobBatch search params */
     type JobBatchSearchParams = CommonType.RecordNullable<
       Pick<Api.JobBatch.JobBatch, 'groupName' | 'jobName' | 'taskBatchStatus' | 'jobId' | 'taskType'> &
-        CommonSearchParams & { datetimeRange?: [string, string] }
+      CommonSearchParams & { datetimeRange?: [string, string] }
     >;
 
     /** JobBatch list */
@@ -1243,7 +985,7 @@ declare namespace Api {
     /** workflowBatch search params */
     type WorkflowBatchSearchParams = CommonType.RecordNullable<
       Pick<Api.WorkflowBatch.WorkflowBatch, 'workflowId' | 'groupName' | 'workflowName' | 'taskBatchStatus'> &
-        CommonSearchParams & { datetimeRange?: [string, string] }
+      CommonSearchParams & { datetimeRange?: [string, string] }
     >;
 
     /** workflowBatch list */
@@ -1256,8 +998,6 @@ declare namespace Api {
    * backend api module: "retryLog"
    */
   namespace RetryLog {
-    import RetryStatusType = Api.RetryTask.RetryStatusType;
-    import TaskType = Api.RetryTask.TaskType;
     type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'page' | 'size'>;
 
     /** retryLog */
@@ -1268,10 +1008,6 @@ declare namespace Api {
       groupName: string;
       /** 场景名称 */
       sceneName: string;
-      /** 重试状态 */
-      retryStatus: RetryStatusType;
-      /** 任务类型 */
-      taskType: TaskType;
       /** 幂等id */
       idempotentId: string;
       /** 业务编号 */
@@ -1290,14 +1026,74 @@ declare namespace Api {
       retryCount?: number;
     }>;
 
-    /** retryLog search params */
-    type RetryLogSearchParams = CommonType.RecordNullable<
-      Pick<Api.RetryLog.RetryLog, 'uniqueId' | 'groupName' | 'sceneName' | 'idempotentId' | 'bizNo' | 'retryStatus'> &
-        CommonSearchParams & { datetimeRange?: [string, string] }
-    >;
 
     /** retryLog list */
     type RetryLogList = Common.PaginatingQueryRecord<RetryLog>;
+  }
+
+
+
+  /**
+    * namespace UserManager
+    *
+    * backend api module: "UserManager"
+    */
+  namespace VehicleManager {
+
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'page' | 'size'>;
+
+
+    /** vehicle list */
+    type VehicleList = Common.PaginatingQueryRecord<Vehicle>;
+
+    type VehicleType =
+      | 'Suv'
+      | 'Mpv'
+      | 'Sedan'
+      | 'Coupe'
+      | 'Supercar'
+      | 'Jeep'
+      | 'Minivan'
+      | 'StationWagon'
+      | 'Truck'
+      | 'Bus'
+      | 'Hybrid'
+      | 'EV'
+      | 'Pickup';
+
+    type VehicleSearchParams = CommonType.RecordNullable<
+      Pick<
+        Api.VehicleManager.Vehicle,
+        | 'vehicleName'
+        | 'Parts'
+        | 'Driver'
+        | 'States'
+        | 'DispatchInfo'
+        | 'PersonCharge'
+        | 'Type'
+      > &
+      CommonSearchParams
+    >;
+
+    type EnableStatus = '1' | '2';
+
+    /** vehicle */
+    type Vehicle = Common.CommonRecord<{
+      // 车辆名字
+      vehicleName: string;
+      // 车辆部门
+      Parts: string;
+      // 驾驶人
+      Driver: string;
+      // 车辆状态
+      States: EnableStatus | null;
+      // 车辆调度信息
+      DispatchInfo: string;
+      // 车辆管理人员
+      PersonCharge: string;
+      // 车辆类型
+      Type: string;
+    }>;
   }
   /**
    * namespace UserManager
@@ -1330,7 +1126,7 @@ declare namespace Api {
     /** userManager search params */
     type UserManagerSearchParams = CommonType.RecordNullable<
       Pick<Api.UserManager.UserManager, 'id' | 'username' | 'password' | 'checkPassword' | 'role' | 'permissions'> &
-        CommonSearchParams
+      CommonSearchParams
     >;
 
     /** userCenter list */

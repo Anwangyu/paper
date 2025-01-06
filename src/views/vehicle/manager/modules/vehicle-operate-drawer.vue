@@ -12,7 +12,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemManage.Vehicle | null;
+  rowData?: Api.VehicleManager.Vehicle | null;
 }
 
 const props = defineProps<Props>();
@@ -39,7 +39,7 @@ const title = computed(() => {
 });
 
 type Model = Pick<
-  Api.SystemManage.Vehicle,
+  Api.VehicleManager.Vehicle,
   | 'vehicleName'
   | 'vehicleParts'
   | 'vehicleDriver'

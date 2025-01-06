@@ -47,7 +47,7 @@ const {
           return '';
         }
 
-        const tagMap: Record<Api.SystemManage.VehicleType, NaiveUI.ThemeColor> = {
+        const tagMap: Record<Api.VehicleManager.VehicleType, NaiveUI.ThemeColor> = {
           Suv: 'primary',
           Mpv: 'success',
           Sedan: 'warning',
@@ -62,7 +62,7 @@ const {
           EV: 'primary',
           Pickup: 'warning'
         };
-        const type = row.vehicleType as Api.SystemManage.VehicleType;
+        const type = row.vehicleType as Api.VehicleManager.VehicleType;
         const label = $t(vehicleTypeRecord[type] || 'common.unknown');
         const color = tagMap[type] || 'info';
 
@@ -77,19 +77,20 @@ const {
       title: $t('page.vehicleManager.vehicleStates'),
       align: 'center',
       width: 100,
-      render: row => {
+      render: (row: { status: Api.Common.EnableStatus }) => {
         if (row.status === null || row.status === undefined) {
           return null;
         }
 
         const tagMap: Record<Api.Common.EnableStatus, NaiveUI.ThemeColor> = {
           1: 'success',
-          2: 'warning'
+          2: 'warning',
         };
 
         const label = $t(enableStatusRecord[row.status]);
         return <NTag type={tagMap[row.status]}>{label}</NTag>;
       }
+
     },
     {
       key: 'operate',

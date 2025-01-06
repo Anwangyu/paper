@@ -16,9 +16,9 @@ const emit = defineEmits<Emits>();
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 
-const model = defineModel<Api.SystemManage.VehicleSearchParams>('model', { required: true });
+const model = defineModel<Api.VehicleManager.VehicleSearchParams>('model', { required: true });
 
-type RuleKey = Extract<keyof Api.SystemManage.VehicleSearchParams, 'userEmail' | 'userPhone'>;
+type RuleKey = Extract<keyof Api.VehicleManager.VehicleSearchParams, 'userEmail' | 'userPhone'>;
 
 const rules = computed<Record<RuleKey, App.Global.FormRule>>(() => {
   const { patternRules } = useFormRules(); // inside computed to make locale reactive
