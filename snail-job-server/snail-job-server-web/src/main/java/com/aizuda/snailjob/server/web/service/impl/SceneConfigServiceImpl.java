@@ -27,7 +27,6 @@ import com.aizuda.snailjob.template.datasource.access.AccessTemplate;
 import com.aizuda.snailjob.template.datasource.access.ConfigAccess;
 import com.aizuda.snailjob.template.datasource.access.TaskAccess;
 import com.aizuda.snailjob.template.datasource.persistence.mapper.RetrySummaryMapper;
-import com.aizuda.snailjob.template.datasource.persistence.po.RetryDeadLetter;
 import com.aizuda.snailjob.template.datasource.persistence.po.RetrySceneConfig;
 import com.aizuda.snailjob.template.datasource.persistence.po.RetrySummary;
 import com.aizuda.snailjob.template.datasource.persistence.po.RetryTask;
@@ -235,30 +234,27 @@ public class SceneConfigServiceImpl implements SceneConfigService {
                 .eq(RetrySceneConfig::getSceneStatus, StatusEnum.NO.getStatus())
                 .in(RetrySceneConfig::getId, ids);
 
+        // 获取需要删除的场景配置信息
         List<RetrySceneConfig> sceneConfigs = accessTemplate.getSceneConfigAccess().list(queryWrapper);
         Assert.notEmpty(sceneConfigs, () -> new SnailJobServerException("删除重试场景失败, 请检查场景状态是否关闭状态"));
 
         Set<String> sceneNames = StreamUtils.toSet(sceneConfigs, RetrySceneConfig::getSceneName);
         Set<String> groupNames = StreamUtils.toSet(sceneConfigs, RetrySceneConfig::getGroupName);
 
+        // 检查是否存在未删除的重试任务
         TaskAccess<RetryTask> retryTaskAccess = accessTemplate.getRetryTaskAccess();
-        TaskAccess<RetryDeadLetter> retryTaskTaskAccess = accessTemplate.getRetryDeadLetterAccess();
         for (String groupName : groupNames) {
             List<RetryTask> retryTasks = retryTaskAccess.listPage(groupName, namespaceId, new PageDTO<>(1, 1),
                     new LambdaQueryWrapper<RetryTask>().in(RetryTask::getSceneName, sceneNames).orderByAsc(RetryTask::getId)).getRecords();
             Assert.isTrue(CollUtil.isEmpty(retryTasks),
-                    () -> new SnailJobServerException("删除重试场景失败, 存在【重试任务】请先删除【重试任务】在重试"));
-
-            List<RetryDeadLetter> retryDeadLetters = retryTaskTaskAccess.listPage(groupName, namespaceId, new PageDTO<>(1, 1),
-                    new LambdaQueryWrapper<RetryDeadLetter>().in(RetryDeadLetter::getSceneName, sceneNames).orderByAsc(RetryDeadLetter::getId)).getRecords();
-            Assert.isTrue(CollUtil.isEmpty(retryDeadLetters),
-                    () -> new SnailJobServerException("删除重试场景失败, 存在【死信任务】请先删除【死信任务】在重试"));
+                    () -> new SnailJobServerException("删除重试场景失败, 存在【重试任务】请先删除【重试任务】再重试"));
         }
 
+        // 删除场景配置
         Assert.isTrue(ids.size() == accessTemplate.getSceneConfigAccess().delete(queryWrapper),
                 () -> new SnailJobServerException("删除重试场景失败, 请检查场景状态是否关闭状态"));
 
-
+        // 删除汇总表中的数据
         List<RetrySummary> retrySummaries = retrySummaryMapper.selectList(
                 new LambdaQueryWrapper<RetrySummary>()
                         .select(RetrySummary::getId)
@@ -267,8 +263,8 @@ public class SceneConfigServiceImpl implements SceneConfigService {
                         .in(RetrySummary::getSceneName, sceneNames)
         );
         if (CollUtil.isNotEmpty(retrySummaries)) {
-            Assert.isTrue(retrySummaries.size() == retrySummaryMapper.deleteByIds(StreamUtils.toSet(retrySummaries, RetrySummary::getId))
-                    , () -> new SnailJobServerException("删除汇总表数据失败"));
+            Assert.isTrue(retrySummaries.size() == retrySummaryMapper.deleteByIds(StreamUtils.toSet(retrySummaries, RetrySummary::getId)),
+                    () -> new SnailJobServerException("删除汇总表数据失败"));
         }
 
         return Boolean.TRUE;

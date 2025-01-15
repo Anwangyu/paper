@@ -259,6 +259,7 @@ public class GroupConfigServiceImpl implements GroupConfigService {
      * 校验retry_task_x和retry_dead_letter_x是否存在
      */
     private void checkGroupPartition(GroupConfig groupConfig, String namespaceId) {
+        // 检查 retry_task 表
         try {
             TaskAccess<RetryTask> retryTaskAccess = accessTemplate.getRetryTaskAccess();
             retryTaskAccess.count(groupConfig.getGroupName(), namespaceId,
@@ -267,19 +268,6 @@ public class GroupConfigServiceImpl implements GroupConfigService {
             Optional.ofNullable(e.getMessage()).ifPresent(s -> {
                 if (s.contains("retry_task_" + groupConfig.getGroupPartition()) && s.contains("doesn't exist")) {
                     throw new SnailJobServerException("分区:[{}] '未配置表retry_task_{}', 请联系管理员进行配置",
-                            groupConfig.getGroupPartition(), groupConfig.getGroupPartition());
-                }
-            });
-        }
-
-        try {
-            TaskAccess<RetryDeadLetter> retryTaskAccess = accessTemplate.getRetryDeadLetterAccess();
-            retryTaskAccess.one(groupConfig.getGroupName(), namespaceId,
-                    new LambdaQueryWrapper<RetryDeadLetter>().eq(RetryDeadLetter::getId, 1));
-        } catch (BadSqlGrammarException e) {
-            Optional.ofNullable(e.getMessage()).ifPresent(s -> {
-                if (s.contains("retry_dead_letter_" + groupConfig.getGroupPartition()) && s.contains("doesn't exist")) {
-                    throw new SnailJobServerException("分区:[{}] '未配置表retry_dead_letter_{}', 请联系管理员进行配置",
                             groupConfig.getGroupPartition(), groupConfig.getGroupPartition());
                 }
             });

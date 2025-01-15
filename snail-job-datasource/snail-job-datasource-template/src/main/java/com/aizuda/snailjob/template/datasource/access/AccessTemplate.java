@@ -3,11 +3,13 @@ package com.aizuda.snailjob.template.datasource.access;
 import com.aizuda.snailjob.template.datasource.access.config.GroupConfigAccess;
 import com.aizuda.snailjob.template.datasource.access.config.NotifyConfigAccess;
 import com.aizuda.snailjob.template.datasource.access.config.SceneConfigAccess;
-import com.aizuda.snailjob.template.datasource.access.task.RetryDeadLetterTaskAccess;
 import com.aizuda.snailjob.template.datasource.access.task.RetryTaskAccess;
 import com.aizuda.snailjob.template.datasource.enums.OperationTypeEnum;
 import com.aizuda.snailjob.template.datasource.exception.SnailJobDatasourceException;
-import com.aizuda.snailjob.template.datasource.persistence.po.*;
+import com.aizuda.snailjob.template.datasource.persistence.po.GroupConfig;
+import com.aizuda.snailjob.template.datasource.persistence.po.NotifyConfig;
+import com.aizuda.snailjob.template.datasource.persistence.po.RetrySceneConfig;
+import com.aizuda.snailjob.template.datasource.persistence.po.RetryTask;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -48,17 +50,7 @@ public class AccessTemplate {
                 .orElseThrow(() -> new SnailJobDatasourceException("not supports operation type"));
     }
 
-    /**
-     * 获取死信任务操作类
-     *
-     * @return {@link RetryDeadLetterTaskAccess} 获取死信任务操作类
-     */
-    public TaskAccess<RetryDeadLetter> getRetryDeadLetterAccess() {
-        return (TaskAccess<RetryDeadLetter>) Optional.ofNullable(
-                        REGISTER_ACCESS.get(OperationTypeEnum.RETRY_DEAD_LETTER.name()))
-                .orElseThrow(() -> new SnailJobDatasourceException("not supports operation type"));
 
-    }
 
     /**
      * 获取场景配置操作类

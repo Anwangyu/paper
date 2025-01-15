@@ -23,7 +23,7 @@ public class SnailJobMybatisConfiguration extends MybatisConfiguration {
     private static final String BATCH_INSERT_ID = "insertBatch";
 
     static {
-        DUPLICATE_IDS.add(RetryDeadLetterMapper.class.getName() + "." + BATCH_INSERT_ID);
+//        DUPLICATE_IDS.add(RetryDeadLetterMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(ServerNodeMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(JobTaskMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(JobSummaryMapper.class.getName() + "." + BATCH_INSERT_ID);
