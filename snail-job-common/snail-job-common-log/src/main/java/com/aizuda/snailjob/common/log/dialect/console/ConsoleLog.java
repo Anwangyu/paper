@@ -10,7 +10,6 @@ import com.aizuda.snailjob.common.log.level.Level;
 /**
  * 利用System.out.println()打印日志
  *
- * @author wodeyangzipingpingwuqi
  */
 public class ConsoleLog extends AbstractLog {
 

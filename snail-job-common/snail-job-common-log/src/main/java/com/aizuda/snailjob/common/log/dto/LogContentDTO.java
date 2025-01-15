@@ -8,11 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-/**
- * @author wodeyangzipingpingwuqi
- * @date 2023-12-27
- * @since 2.6.0
- */
+
 public class LogContentDTO {
 
     private List<TaskLogFieldDTO> fieldList;

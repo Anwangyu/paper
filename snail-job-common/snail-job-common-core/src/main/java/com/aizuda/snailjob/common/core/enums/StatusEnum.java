@@ -5,9 +5,7 @@ import lombok.Getter;
 
 /**
  * 状态值
- *
- * @author: opensnail
- * @date : 2021-11-26 17:58
+
  */
 @AllArgsConstructor
 @Getter

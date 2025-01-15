@@ -7,11 +7,8 @@ import java.io.Serializable;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-/**
- * @author xiaowoniu
- * @date 2024-01-31 23:32:15
- * @since 2.6.0
- */
+
+
 public class StackWalkerCaller implements Caller, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

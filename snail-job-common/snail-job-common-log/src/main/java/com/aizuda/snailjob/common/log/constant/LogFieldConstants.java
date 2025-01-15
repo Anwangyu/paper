@@ -1,10 +1,6 @@
 package com.aizuda.snailjob.common.log.constant;
 
-/**
- * @author wodeyangzipingpingwuqi
- * @date 2023-12-27
- * @since 2.6.0
- */
+
 public interface LogFieldConstants {
 
     String MDC_REMOTE = "remote";

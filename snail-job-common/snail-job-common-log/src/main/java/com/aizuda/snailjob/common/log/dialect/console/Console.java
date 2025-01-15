@@ -297,8 +297,7 @@ public class Console {
      * 返回当前位置+行号 (不支持Lambda、内部类、递归内使用)
      *
      * @return 返回当前行号
-     * @author dahuoyzs
-     * @since 5.2.5
+
      */
     public static String where() {
         final StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];

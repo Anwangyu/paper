@@ -3,7 +3,6 @@ package com.aizuda.snailjob.common.log.level;
 /**
  * 日志等级
  *
- * @author wodeyangzipingpingwuqi
  */
 public enum Level {
     /**

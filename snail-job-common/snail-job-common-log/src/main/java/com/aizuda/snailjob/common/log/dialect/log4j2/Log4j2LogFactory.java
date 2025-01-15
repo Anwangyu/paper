@@ -6,7 +6,6 @@ import com.aizuda.snailjob.common.log.factory.LogFactory;
 /**
  * <a href="http://logging.apache.org/log4j/2.x/index.html">Apache Log4J 2</a> log.<br>
  *
- * @author wodeyangzipingpingwuqi
  */
 public class Log4j2LogFactory extends LogFactory {
 

@@ -14,8 +14,6 @@ import java.util.List;
 /**
  * 邮件内部工具类
  *
- * @author looly
- * @since 3.2.3
  */
 public class InternalMailUtil {
 

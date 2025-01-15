@@ -8,8 +8,7 @@ import java.util.Objects;
 /**
  * 获取环境信息
  *
- * @author: opensnail
- * @date : 2021-12-01 14:27
+
  */
 public class EnvironmentUtils {
     public static final String DEFAULT_ENV = "default ";

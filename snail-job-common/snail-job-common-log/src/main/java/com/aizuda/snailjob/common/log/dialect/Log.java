@@ -8,7 +8,6 @@ import com.aizuda.snailjob.common.log.level.*;
 /**
  * 日志统一接口
  *
- * @author wodeyangzipingpingwuqi
  */
 public interface Log extends TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog {
 

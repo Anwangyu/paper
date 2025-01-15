@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 /**
  * stream 流工具类
  *
- * @author Lion Li
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StreamUtils {

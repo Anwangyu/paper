@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * 抽象日志类<br> 实现了一些通用的接口
  *
- * @author wodeyangzipingpingwuqi
  */
 public abstract class AbstractLog implements Log, Serializable {
 

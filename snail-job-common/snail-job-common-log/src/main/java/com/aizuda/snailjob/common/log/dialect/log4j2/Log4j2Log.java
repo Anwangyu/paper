@@ -15,7 +15,6 @@ import java.io.Serial;
 /**
  * <a href="http://logging.apache.org/log4j/2.x/index.html">Apache Log4J 2</a> log.<br>
  *
- * @author wodeyangzipingpingwuqi
  */
 public class Log4j2Log extends AbstractLog {
 

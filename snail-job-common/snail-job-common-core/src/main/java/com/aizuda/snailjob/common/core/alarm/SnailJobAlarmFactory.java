@@ -3,10 +3,7 @@ package com.aizuda.snailjob.common.core.alarm;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author: opensnail
- * @date : 2021-11-25 09:20
- */
+
 public class SnailJobAlarmFactory {
 
     private static final Map<Integer, Alarm> alarmMap = new ConcurrentHashMap<>();

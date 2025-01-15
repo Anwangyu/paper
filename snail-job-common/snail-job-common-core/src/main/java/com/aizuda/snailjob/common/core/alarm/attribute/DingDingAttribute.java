@@ -4,10 +4,7 @@ import lombok.Data;
 
 import java.util.List;
 
-/**
- * @author: opensnail
- * @date : 2022-05-04 16:13
- */
+
 @Data
 public class DingDingAttribute {
 

@@ -7,11 +7,7 @@ import lombok.Getter;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author: opensanil
- * @date : 2024-05-11
- * @since : sj_1.0.0
- */
+
 @AllArgsConstructor
 @Getter
 public class SnailJobFuture<R extends Result<Object>> extends CompletableFuture<R> {

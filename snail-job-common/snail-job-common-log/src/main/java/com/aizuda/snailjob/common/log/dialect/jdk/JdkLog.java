@@ -13,7 +13,6 @@ import static com.aizuda.snailjob.common.log.factory.LogFactory.extractThrowable
 /**
  * <a href="http://java.sun.com/javase/6/docs/technotes/guides/logging/index.html">java.util.logging</a> log.
  *
- * @author wodeyangzipingpingwuqi
  */
 public class JdkLog extends AbstractLog {
 

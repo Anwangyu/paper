@@ -11,7 +11,6 @@ import java.util.Objects;
  * 全局日志工厂类<br>
  * 用于减少日志工厂创建，减少日志库探测
  *
- * @author wodeyangzipingpingwuqi
  */
 public class GlobalLogFactory {
 

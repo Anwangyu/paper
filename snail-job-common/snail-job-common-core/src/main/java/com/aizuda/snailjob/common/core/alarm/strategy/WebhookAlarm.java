@@ -17,10 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * @author: opensnail
- * @date : 2024-05-07 10:15
- */
 @Component
 @RequiredArgsConstructor
 public class WebhookAlarm extends AbstractAlarm<AlarmContext> {

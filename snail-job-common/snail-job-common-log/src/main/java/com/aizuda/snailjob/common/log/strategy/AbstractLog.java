@@ -6,10 +6,7 @@ import com.aizuda.snailjob.common.log.factory.LogFactory;
 import com.aizuda.snailjob.common.log.lang.LogCaller;
 import com.aizuda.snailjob.common.log.level.Level;
 
-/**
- * @author: opensnail
- * @date : 2024-05-03
- */
+
 public abstract class AbstractLog {
     // 完全限定类名
     private static final String FQCN = AbstractLog.class.getName();

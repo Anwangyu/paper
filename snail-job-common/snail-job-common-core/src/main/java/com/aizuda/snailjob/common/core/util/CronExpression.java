@@ -182,9 +182,7 @@ import java.util.*;
  * </ul>
  * </p>
  *
- * @author Sharada Jambula, James House
- * @author Contributions from Mads Henderson
- * @author Refactoring from CronTrigger to CronExpression by Aaron Craven
+
  * <p>
  * Borrowed from quartz v2.3.1
  */

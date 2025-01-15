@@ -18,7 +18,6 @@ import static com.aizuda.snailjob.common.log.factory.LogFactory.extractThrowable
  * <a href="http://www.slf4j.org/">SLF4J</a> log.<br>
  * 同样无缝支持 <a href="http://logback.qos.ch/">LogBack</a>
  *
- * @author wodeyangzipingpingwuqi
  */
 public class Slf4jLog extends AbstractLog {
     private static final long serialVersionUID = -6843151523380063975L;

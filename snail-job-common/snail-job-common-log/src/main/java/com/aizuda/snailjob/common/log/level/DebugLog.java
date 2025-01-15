@@ -3,7 +3,6 @@ package com.aizuda.snailjob.common.log.level;
 /**
  * DEBUG级别日志接口
  *
- * @author wodeyangzipingpingwuqi
  */
 public interface DebugLog {
 

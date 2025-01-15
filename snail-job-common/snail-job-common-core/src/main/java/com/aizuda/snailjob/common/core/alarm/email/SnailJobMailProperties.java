@@ -7,11 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.Serializable;
 import java.util.Map;
 
-/**
- * @author: opensnail
- * @date : 2024-05-03
- * @since : sj_1.0.0
- */
+
 @Data
 @Configuration
 @ConfigurationProperties(value = "snail-job.mail")

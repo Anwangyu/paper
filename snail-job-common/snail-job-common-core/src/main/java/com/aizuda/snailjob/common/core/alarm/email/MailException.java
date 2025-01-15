@@ -8,7 +8,6 @@ import java.io.Serial;
 /**
  * 邮件异常
  *
- * @author xiaoleilu
  */
 public class MailException extends RuntimeException {
     @Serial

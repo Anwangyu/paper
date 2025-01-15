@@ -25,10 +25,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import static com.aizuda.snailjob.common.core.constant.SystemConstants.YYYY_MM_DD;
 import static com.aizuda.snailjob.common.core.constant.SystemConstants.YYYY_MM_DD_HH_MM_SS;
 
-/**
- * @author: byteblogs
- * @date: 2019/8/3 14:57
- */
 public class JsonUtil {
 
     /**

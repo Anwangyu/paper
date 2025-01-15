@@ -27,8 +27,7 @@ import java.util.Date;
 /**
  * 邮件发送客户端
  *
- * @author looly
- * @since 3.2.0
+
  */
 public class Mail implements Builder<MimeMessage> {
     @Serial

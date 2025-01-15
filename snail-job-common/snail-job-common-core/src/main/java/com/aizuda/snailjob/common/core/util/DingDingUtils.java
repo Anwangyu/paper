@@ -14,10 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author: opensnail
- * @date : 2021-11-25 09:54
- */
+
 @Slf4j
 public class DingDingUtils {
 

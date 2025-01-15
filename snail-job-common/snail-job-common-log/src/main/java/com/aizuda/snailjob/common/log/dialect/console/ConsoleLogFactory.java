@@ -6,7 +6,6 @@ import com.aizuda.snailjob.common.log.factory.LogFactory;
 /**
  * 利用System.out.println()打印日志
  *
- * @author wodeyangzipingpingwuqi
  */
 public class ConsoleLogFactory extends LogFactory {
 

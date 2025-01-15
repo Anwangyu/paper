@@ -6,8 +6,8 @@ import lombok.Getter;
 /**
  * 预警类型
  *
- * @author: opensnail
- * @date : 2021-11-25 09:19
+ *
+ *
  */
 @AllArgsConstructor
 @Getter

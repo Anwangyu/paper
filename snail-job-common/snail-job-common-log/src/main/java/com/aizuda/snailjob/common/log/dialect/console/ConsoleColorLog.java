@@ -12,7 +12,6 @@ import java.util.function.Function;
 /**
  * 利用System.out.println()打印彩色日志
  *
- * @author wodeyangzipingpingwuqi
  */
 public class ConsoleColorLog extends ConsoleLog {
 

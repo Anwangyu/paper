@@ -11,7 +11,6 @@ import org.apache.log4j.MDC;
 /**
  * <a href="http://logging.apache.org/log4j/1.2/index.html">Apache Log4J</a> log.<br>
  *
- * @author wodeyangzipingpingwuqi
  */
 public class Log4jLog extends AbstractLog {
 

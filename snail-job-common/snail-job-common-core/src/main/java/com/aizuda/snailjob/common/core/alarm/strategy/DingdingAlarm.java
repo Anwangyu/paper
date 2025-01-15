@@ -9,10 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * @author: opensnail
- * @date : 2021-11-25 09:20
- */
 @Component
 public class DingdingAlarm extends AbstractAlarm<AlarmContext> {
 

@@ -14,7 +14,6 @@ import java.util.Map;
 /**
  * 日志工厂类
  *
- * @author wodeyangzipingpingwuqi
  */
 public abstract class LogFactory {
 

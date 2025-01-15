@@ -3,10 +3,7 @@ package com.aizuda.snailjob.common.core.alarm;
 import lombok.Data;
 import org.slf4j.helpers.MessageFormatter;
 
-/**
- * @author: opensnail
- * @date : 2021-11-25 09:38
- */
+
 @Data
 public class AlarmContext {
 

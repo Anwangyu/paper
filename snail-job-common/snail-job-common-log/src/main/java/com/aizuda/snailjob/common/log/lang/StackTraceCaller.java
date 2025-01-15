@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * 通过StackTrace方式获取调用者。此方式效率最低，不推荐使用
  *
- * @author wodeyangzipingpingwuqi
  */
 public class StackTraceCaller implements Caller, Serializable {
     @Serial
