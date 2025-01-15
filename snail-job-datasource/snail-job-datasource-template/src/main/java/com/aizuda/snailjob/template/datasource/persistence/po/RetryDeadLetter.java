@@ -1,4 +1,4 @@
-//package com.aizuda.snailjob.template.datasource.persistence.po;
+package com.aizuda.snailjob.template.datasource.persistence.po;
 //
 //import com.baomidou.mybatisplus.annotation.IdType;
 //import com.baomidou.mybatisplus.annotation.TableId;

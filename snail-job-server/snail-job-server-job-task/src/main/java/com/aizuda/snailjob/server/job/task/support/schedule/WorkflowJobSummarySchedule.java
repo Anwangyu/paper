@@ -122,6 +122,8 @@ public class WorkflowJobSummarySchedule extends AbstractSchedule implements Life
         }
     }
 
+
+
     private List<JobSummary> jobSummaryList(LocalDateTime triggerAt,
                                             List<JobBatchSummaryResponseDO> summaryResponseDOList) {
         List<JobSummary> jobSummaryList = new ArrayList<>();

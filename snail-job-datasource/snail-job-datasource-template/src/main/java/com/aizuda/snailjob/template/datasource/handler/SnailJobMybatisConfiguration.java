@@ -7,11 +7,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author: opensnail
- * @date : 2024-07-19
- * @since : 1.2.0
- */
+
 public class SnailJobMybatisConfiguration extends MybatisConfiguration {
 
     /**
@@ -23,13 +19,11 @@ public class SnailJobMybatisConfiguration extends MybatisConfiguration {
     private static final String BATCH_INSERT_ID = "insertBatch";
 
     static {
-//        DUPLICATE_IDS.add(RetryDeadLetterMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(ServerNodeMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(JobTaskMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(JobSummaryMapper.class.getName() + "." + BATCH_INSERT_ID);
-        DUPLICATE_IDS.add(RetryTaskLogMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(RetrySummaryMapper.class.getName() + "." + BATCH_INSERT_ID);
-        DUPLICATE_IDS.add(RetryTaskLogMessageMapper.class.getName() + "." + BATCH_INSERT_ID);
+//        DUPLICATE_IDS.add(RetryTaskLogMessageMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(RetryTaskMapper.class.getName() + "." + BATCH_INSERT_ID);
         DUPLICATE_IDS.add(JobLogMessageMapper.class.getName() + "." + BATCH_INSERT_ID);
     }

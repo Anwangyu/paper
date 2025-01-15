@@ -26,9 +26,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author: opensnail
@@ -42,7 +40,7 @@ public class SnailJobTemplateAutoConfiguration {
     /**
      * 采用后缀分区的数据库表清单
      */
-    private static final List<String> TABLES_WITH_PARTITION = Arrays.asList("sj_retry_task", "sj_retry_dead_letter");
+    private static final List<String> TABLES_WITH_PARTITION = List.of("sj_retry_task");
 
     @Bean("sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource, Environment environment,

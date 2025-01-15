@@ -2,7 +2,7 @@ package com.aizuda.snailjob.server.web.service.impl;
 
 import com.aizuda.snailjob.server.common.result.ResultView;
 import com.aizuda.snailjob.server.web.service.SystemVehicleService;
-import com.aizuda.snailjob.template.datasource.mapper.SystemVehicleMapper;
+import com.aizuda.snailjob.template.datasource.persistence.mapper.SystemVehicleMapper;
 import com.aizuda.snailjob.template.datasource.persistence.po.SystemVehicle;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.RequiredArgsConstructor;

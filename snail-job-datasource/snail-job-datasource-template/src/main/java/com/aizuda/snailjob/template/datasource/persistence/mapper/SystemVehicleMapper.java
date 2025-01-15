@@ -1,4 +1,4 @@
-package com.aizuda.snailjob.template.datasource.mapper;
+package com.aizuda.snailjob.template.datasource.persistence.mapper;
 
 import com.aizuda.snailjob.template.datasource.persistence.po.SystemVehicle;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

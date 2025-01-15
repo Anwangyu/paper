@@ -38,10 +38,8 @@
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.3</version>
         </dependency>
-        <dependency>
-            <groupId>com.aizuda</groupId>
-            <artifactId>snail-job-server-retry-task</artifactId>
-        </dependency>
+
+
         <dependency>
             <groupId>com.aizuda</groupId>
             <artifactId>snail-job-server-job-task</artifactId>

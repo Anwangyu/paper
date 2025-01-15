@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication(scanBasePackages = {"com.aizuda.snailjob.server.starter.*", "com.aizuda.snailjob.template.*"})
 @EnableTransactionManagement(proxyTargetClass = true)
-@MapperScan("com.aizuda.snailjob.template.datasource.mapper")
+@MapperScan("com.aizuda.snailjob.template.datasource.persistence.mapper")
 
 @Slf4j
 public class SnailJobServerApplication {
