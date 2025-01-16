@@ -1,0 +1,15 @@
+package src.main.java.com.aizuda.snailjob.template.datasource.persistence.mapper;
+
+import src.main.java.com.aizuda.snailjob.template.datasource.persistence.po.DistributedLock;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+/**
+ * <p>
+ * 锁定表 Mapper 接口
+ * </p>
+
+
+ */
+public interface DistributedLockMapper extends BaseMapper<DistributedLock> {
+
+}

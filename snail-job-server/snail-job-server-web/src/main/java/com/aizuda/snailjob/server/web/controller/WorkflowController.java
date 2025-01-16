@@ -37,7 +37,7 @@ public class WorkflowController {
 
     @PostMapping
     @LoginRequired(role = RoleEnum.USER)
-    public Boolean saveWorkflow(@RequestBody @Validated WorkflowRequestVO workflowRequestVO) {
+    public Boolean saveWorkflow(@RequestBody  WorkflowRequestVO workflowRequestVO) {
         return workflowService.saveWorkflow(workflowRequestVO);
     }
 

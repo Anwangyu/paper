@@ -42,6 +42,7 @@
         <module>snail-job-common</module>
         <module>snail-job-server</module>
         <module>snail-job-datasource</module>
+
     </modules>
 
     <dependencyManagement>
